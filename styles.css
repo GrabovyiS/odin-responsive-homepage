@@ -3,3 +3,126 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+p,
+a,
+li {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+main,
+.main-footer {
+  margin: 128px;
+}
+
+.assistive-text {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1050px) {
+  main,
+  .main-footer {
+    margin: 64px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main,
+  .main-footer {
+    margin: 16px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  main,
+  .main-footer {
+    margin: 10px;
+  }
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  /* makes all rows be of equal width */
+  grid-auto-rows: 1fr;
+  gap: 64px;
+  justify-content: center;
+
+  .project-card {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+    align-items: stretch;
+    isolation: isolate;
+
+    .project-card-body {
+      padding: 16px 16px 32px 16px;
+      box-shadow: 0px 0px 23px 4px rgba(0, 0, 0, 0.3);
+      isolation: isolate;
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 16px 0;
+      }
+    }
+
+    .card-header-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    a img {
+      width: 24px;
+      height: 24px;
+      /* to fix unwanted height for descenders symbols */
+      vertical-align: bottom;
+    }
+
+    p {
+      color: gray;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .projects {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}

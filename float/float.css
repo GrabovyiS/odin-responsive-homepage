@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+}
+
+.hero {
+  margin: 100px;
+  padding: 32px;
+  border: 2px solid black;
+  display: flex;
+  gap: calc(80px + 8vw);
+
+  .person {
+    position: relative;
+    transform: scale(1.5);
+
+    img {
+      max-width: 350px;
+    }
+
+    h1 {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 920px) and (min-width: 601px) {
+  .hero {
+    display: block;
+
+    .person {
+      float: left;
+      position: relative;
+      transform: scale(1.5);
+      transform-origin: bottom right;
+      margin-right: 16px;
+
+      img {
+        max-height: 200px;
+        max-width: 200px;
+      }
+
+      h1 {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+
+    .person {
+      transform: scale(1.5);
+
+      img {
+        width: 100%;
+      }
+
+      h1 {
+        position: absolute;
+        bottom: 8px;
+        left: 8px;
+      }
+    }
+  }
+}

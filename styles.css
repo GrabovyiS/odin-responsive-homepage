@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --aquamarine: rgb(68, 178, 180);
+}
+
 h1,
 h2,
 h3,
@@ -35,8 +39,8 @@ h3 {
 }
 
 main,
-.main-footer {
-  margin: 128px;
+body > footer {
+  padding: 0 128px;
 }
 
 .assistive-text {
@@ -48,22 +52,22 @@ main,
 
 @media screen and (max-width: 1050px) {
   main,
-  .main-footer {
-    margin: 64px;
+  body > footer {
+    padding: 0 64px;
   }
 }
 
 @media screen and (max-width: 600px) {
   main,
-  .main-footer {
-    margin: 16px;
+  body > footer {
+    padding: 0 16px;
   }
 }
 
 @media screen and (max-width: 400px) {
   main,
-  .main-footer {
-    margin: 10px;
+  body > footer {
+    marginpadding: 0 10px;
   }
 }
 
@@ -71,9 +75,10 @@ main,
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   /* makes all rows be of equal width */
+  justify-content: center;
   grid-auto-rows: 1fr;
   gap: 64px;
-  justify-content: center;
+  margin-bottom: 96px;
 
   .project-card {
     display: grid;
@@ -124,5 +129,105 @@ main,
 @media screen and (max-width: 1050px) {
   .projects {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+body > footer {
+  padding-top: 64px;
+  padding-bottom: 64px;
+  color: white;
+  background-color: var(--aquamarine);
+
+  display: flex;
+
+  max-height: 500px;
+  gap: 64px;
+
+  .footer-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+
+      div {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+    }
+
+    .social-media-links {
+      display: flex;
+      gap: 24px;
+
+      a img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  .footer-picture-container {
+    min-width: 0;
+    flex-grow: 1;
+  }
+
+  .footer-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer-image {
+    max-width: 40vw;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  body > footer {
+    max-height: initial;
+    gap: 96px;
+    .footer-image {
+      max-width: 40vw;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  body > footer {
+    display: block;
+    overflow: hidden;
+    position: relative;
+
+    .footer-picture-container {
+      max-width: 100vw;
+    }
+
+    .footer-body {
+      margin-bottom: calc(320px);
+    }
+
+    .footer-image {
+      max-width: 100vw;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 320px;
+      object-fit: cover;
+    }
   }
 }

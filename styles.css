@@ -6,6 +6,7 @@
 
 :root {
   --aquamarine: rgb(68, 178, 180);
+  --shadow: 0px 0px 23px 4px rgba(0, 0, 0, 0.3);
 }
 
 h1,
@@ -26,12 +27,12 @@ li {
 }
 
 h1 {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
 }
 
 h2 {
   font-size: 2rem;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 h3 {
@@ -50,13 +51,6 @@ body > footer {
   overflow: hidden;
 }
 
-@media screen and (max-width: 1050px) {
-  main,
-  body > footer {
-    padding: 0 64px;
-  }
-}
-
 @media screen and (max-width: 600px) {
   main,
   body > footer {
@@ -67,68 +61,253 @@ body > footer {
 @media screen and (max-width: 400px) {
   main,
   body > footer {
-    marginpadding: 0 10px;
+    margin: 0 10px;
+    padding: 0 10px;
   }
 }
 
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  /* makes all rows be of equal width */
-  justify-content: center;
-  grid-auto-rows: 1fr;
-  gap: 64px;
-  margin-bottom: 96px;
+.background-triangle {
+  position: absolute;
+}
 
-  .project-card {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
-    align-items: stretch;
-    isolation: isolate;
+section.about-me {
+  display: flex;
+  gap: calc(128px + 8vw);
+  box-shadow: 4px 0px 21px -1px rgba(0, 0, 0, 0.25);
+  padding: 36px 36px 36px 0;
+  margin-top: 156px;
+  margin-bottom: 156px;
 
-    .project-card-body {
-      padding: 16px 16px 32px 16px;
-      box-shadow: 0px 0px 23px 4px rgba(0, 0, 0, 0.3);
-      isolation: isolate;
+  .float-image,
+  .float-container {
+    display: none;
+  }
 
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 16px 0;
+  .person {
+    position: relative;
+    transform-origin: left;
+    transform: scale(1.7);
+
+    picture {
+      width: 100%;
+      height: 100%;
+    }
+
+    .scale-image {
+      max-height: 300px;
+      max-width: 25vw;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top;
+      box-shadow: 0px 0px 23px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    h1.scale {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+    }
+
+    h1.float {
+      display: none;
+    }
+  }
+
+  .about-content {
+    p {
+      color: grey;
+      margin-bottom: 36px;
+    }
+
+    h2 {
+      margin-bottom: 36px;
+    }
+
+    .social-media-links {
+      display: flex;
+      justify-content: end;
+      gap: 16px;
+
+      a img {
+        height: 24px;
+        width: 24px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1260px) and (min-width: 601px) {
+  section.about-me {
+    display: block;
+    padding: 36px 36px 36px 36px;
+    margin-top: 156px;
+    margin-bottom: 156px;
+
+    .scale-image {
+      display: none;
+    }
+
+    h1.scale {
+      display: none;
+    }
+
+    .about-content {
+      p {
+        margin-bottom: 0;
+      }
+
+      .float-container {
+        display: block;
+        position: relative;
+        float: left;
+        width: 120px;
+        height: 132px;
+        margin-right: 8px;
+
+        h1.float {
+          display: block;
+          position: absolute;
+          top: -120px;
+          right: -254px;
+          white-space: nowrap;
+        }
+      }
+
+      .float-image {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 120px;
+        height: 90%;
+        object-fit: cover;
+        transform-origin: bottom right;
+        transform: scale(2.1);
+      }
+
+      .social-media-links {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section.about-me {
+    box-shadow: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 0;
+
+    .person {
+      transform: scale(1);
+
+      .scale-image {
+        max-height: 480px;
+        max-width: 100%;
+        aspect-ratio: auto;
       }
     }
 
-    .card-header-links {
-      display: flex;
-      gap: 16px;
-    }
+    .about-content {
+      .float-container,
+      .float-image {
+        display: none;
+      }
 
-    .project-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      z-index: 1;
-    }
+      p {
+        max-width: 100%;
+        margin-bottom: 16px;
+      }
 
-    a img {
-      width: 24px;
-      height: 24px;
-      /* to fix unwanted height for descenders symbols */
-      vertical-align: bottom;
-    }
+      h2 {
+        text-align: center;
+        margin-bottom: 16px;
+      }
 
-    p {
-      color: gray;
-      font-size: 1rem;
+      .social-media-links {
+        justify-content: center;
+      }
+    }
+  }
+}
+
+section.my-work {
+  margin-top: 96px;
+  margin-bottom: 96px;
+
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    /* makes all rows be of equal width */
+    justify-content: center;
+    grid-auto-rows: 1fr;
+    gap: 64px;
+
+    .project-card {
+      display: grid;
+      grid-template-columns: auto;
+      grid-template-rows: auto 1fr;
+      align-items: stretch;
+      isolation: isolate;
+
+      .project-card-body {
+        padding: 16px 16px 32px 16px;
+        box-shadow: var(--shadow);
+        isolation: isolate;
+
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 16px 0;
+        }
+      }
+
+      .card-header-links {
+        display: flex;
+        gap: 16px;
+      }
+
+      .project-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        z-index: 1;
+      }
+
+      a img {
+        width: 24px;
+        height: 24px;
+        /* to fix unwanted height for descenders symbols */
+        vertical-align: bottom;
+      }
+
+      p {
+        color: gray;
+        font-size: 1rem;
+      }
     }
   }
 }
 
 @media screen and (max-width: 1050px) {
+  section.my-work {
+    margin-top: 64px;
+    margin-bottom: 64px;
+  }
   .projects {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section.my-work {
+    margin-top: 64px;
+    margin-bottom: 64px;
   }
 }
 
@@ -142,6 +321,10 @@ body > footer {
 
   max-height: 500px;
   gap: 64px;
+
+  h2 {
+    margin-bottom: 0;
+  }
 
   .footer-body {
     display: flex;
@@ -229,5 +412,12 @@ body > footer {
       height: 320px;
       object-fit: cover;
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body > footer {
+    padding-top: 48px;
+    padding-bottom: 48px;
   }
 }
